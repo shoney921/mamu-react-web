@@ -23,20 +23,20 @@ function MainPage() {
     <div>
       <div id="header">
         <div id="header-area">
-          <img src="images/icons/mamulogo2.png" />
+          <img src="images/icons/mamulogo2.png" alt="mamu logo" />
         </div>
       </div>
       <div id="body">
         <div id="banner">
-          <img src="images/banners/maum_banner2.png" />
+          <img src="images/banners/maum_banner2.png" alt="mamu banner" />
         </div>
         <h1>Art List</h1>
         <div id="art-list">
-          {arts.map(function (art, index) {
+          {arts.map(function(art, index) {
             return (
               <div className="art-card">
                 <div>
-                  <img className="art-img" src={art.imageUrl} />
+                  <img className="art-img" src={art.imageUrl} alt="art img" />
                 </div>
                 <div className="art-contents">
                   <span className="artist-name">{art.artistName}</span>
