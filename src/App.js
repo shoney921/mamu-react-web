@@ -13,7 +13,7 @@ function App() {
           <MainPageComponent />
         </Route>
         <Route exact={true} path="/art">
-          <ArtPage></ArtPage>
+          <ArtPage />
         </Route>
         <Route exact={true} path="/upload">
           <UploadPage />
