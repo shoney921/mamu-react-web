@@ -84,3 +84,8 @@ body {
 .art-name {
   font-size: 12px;
 }
+
+.art-link {
+  color: inherit;
+  text-decoration: none;
+}
