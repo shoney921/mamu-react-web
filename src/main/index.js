@@ -36,7 +36,7 @@ function MainPage() {
           {arts.map(function(art, index) {
             return (
               <div className="art-card">
-                <Link className="art-link" to={"/art"}>
+                <Link className="art-link" to={`/arts/${index}`}>
                   <div>
                     <img className="art-img" src={art.imageUrl} alt="art img" />
                   </div>
