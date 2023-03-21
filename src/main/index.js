@@ -4,17 +4,17 @@ import axios from "axios";
 
 function MainPage() {
   const [arts, setArts] = React.useState([]);
-  React.useEffect(function () {
+  React.useEffect(function() {
     axios
       .get(
         "https://aacfac5b-039c-4e19-8f27-16a1ac1d8255.mock.pstmn.io/art-list"
       )
-      .then(function (result) {
+      .then(function(result) {
         console.log(result);
         const arts = result.data;
         setArts(arts);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.error("에러 발생 :", error);
       });
   }, []);
