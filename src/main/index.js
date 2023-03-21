@@ -1,6 +1,7 @@
 import "./index.css";
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function MainPage() {
   const [arts, setArts] = React.useState([]);
@@ -35,13 +36,15 @@ function MainPage() {
           {arts.map(function(art, index) {
             return (
               <div className="art-card">
-                <div>
-                  <img className="art-img" src={art.imageUrl} alt="art img" />
-                </div>
-                <div className="art-contents">
-                  <span className="artist-name">{art.artistName}</span>
-                  <span className="art-name">{art.artName}</span>
-                </div>
+                <Link className="art-link" to={"/art"}>
+                  <div>
+                    <img className="art-img" src={art.imageUrl} alt="art img" />
+                  </div>
+                  <div className="art-contents">
+                    <span className="artist-name">{art.artistName}</span>
+                    <span className="art-name">{art.artName}</span>
+                  </div>
+                </Link>
               </div>
             );
           })}
