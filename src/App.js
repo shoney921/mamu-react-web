@@ -1,12 +1,14 @@
 import "./App.css";
 import React from "react";
 import MainPageComponent from "./main";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link, useHistory } from "react-router-dom";
 import UploadPage from "./upload";
 import ArtPage from "./art";
-import { Link } from "react-router-dom";
+import { Button } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 
 function App() {
+  const history = useHistory();
   return (
     <div>
       <div id="header">
@@ -14,6 +16,15 @@ function App() {
           <Link to="/">
             <img src="/images/icons/mamulogo2.png" alt="mamu logo" />
           </Link>
+          <Button
+            size="large"
+            onClick={function() {
+              history.push("/upload");
+            }}
+            icon={<UploadOutlined />}
+          >
+            Upload My Art
+          </Button>
         </div>
       </div>
       <div id="body">

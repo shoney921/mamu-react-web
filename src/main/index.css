@@ -34,7 +34,7 @@ body {
   display: flex;
   justify-items: row;
   flex-wrap: wrap;
-  margin-top: 15;
+  margin-top: 15px;
 }
 
 .art-card {
