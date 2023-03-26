@@ -9,11 +9,10 @@ function ArtPage() {
 
   React.useEffect(function() {
     axios
-      .get(
-        `https://aacfac5b-039c-4e19-8f27-16a1ac1d8255.mock.pstmn.io/arts/${id}`
-      )
+      .get(`http://localhost:8080/arts/${id}`)
       .then(function(result) {
-        setArt(result.data);
+        console.log(result);
+        setArt(result.data.art);
       })
       .catch(function(error) {
         console.error("에러 발생 :", error);
