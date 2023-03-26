@@ -1,22 +1,60 @@
-import React from "react";
-import { Button, Divider, Form, Input } from "antd";
+import React, { useState } from "react";
+import { Button, Divider, Form, Input, Upload } from "antd";
 import "./index.css";
+import { API_URL } from "../config/constants.js";
+import axios from "axios";
 
 function UploadPage() {
-  const onsubmit = (values) => {
-    console.log(values);
+  const [imageUrl, setImageUrl] = React.useState(null);
+  const onSubmit = (values) => {
+    console.log("art Name log : ", values);
+    axios
+      .post(`${API_URL}/arts`, {
+        artName: values.art,
+        artistName: values.artist,
+        description: values.description,
+        imageUrl: imageUrl,
+      })
+      .then((result) => {
+        console.log("axios 결과 :", result);
+      })
+      .catch((error) => {
+        console.error("axios 에러 :", error);
+      });
+  };
+  const onChangeImage = (info) => {
+    if (info.file.status === "uploading") {
+      return;
+    }
+    if (info.file.status === "done") {
+      const response = info.file.response;
+      const imageUrl = response.imageUrl;
+      setImageUrl(imageUrl);
+    }
   };
   return (
     <div id="upload-container">
-      <Form name="상품 업로드" onFinish={onsubmit}>
+      <Form name="상품 업로드" onFinish={onSubmit}>
         <Form.Item
           name="upload"
           label={<div className="upload-label">상품 사진</div>}
         >
-          <div id="upload-img-placeholder">
-            <img src="/images/icons/camera.png" />
-            <span>이미지를 업로드 해주세요.</span>
-          </div>
+          <Upload
+            name="image"
+            action={`${API_URL}/image`}
+            listType="picture"
+            showUploadList={false}
+            onChange={onChangeImage}
+          >
+            {imageUrl ? (
+              <img id="upload-img" src={`${API_URL}/${imageUrl}`} />
+            ) : (
+              <div id="upload-img-placeholder">
+                <img src="/images/icons/camera.png" />
+                <span>이미지를 업로드 해주세요.</span>
+              </div>
+            )}
+          </Upload>
         </Form.Item>
         <Divider />
         <Form.Item
@@ -45,7 +83,7 @@ function UploadPage() {
         <Divider />
         <Form.Item
           label={<div className="upload-label">작품 설명</div>}
-          name="art-description"
+          name="description"
           rules={[{ required: true, message: "작품 소개를 입력해주세요" }]}
         >
           <Input.TextArea
