@@ -2,6 +2,7 @@ import "./index.css";
 import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../config/constants.js";
 
 function ArtPage() {
   const { id } = useParams();
@@ -9,7 +10,7 @@ function ArtPage() {
 
   React.useEffect(function() {
     axios
-      .get(`http://localhost:8080/arts/${id}`)
+      .get(`${API_URL}/arts/${id}`)
       .then(function(result) {
         console.log(result);
         setArt(result.data.art);
