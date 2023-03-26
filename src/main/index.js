@@ -2,15 +2,19 @@ import "./index.css";
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 function MainPage() {
   const [arts, setArts] = React.useState([]);
   React.useEffect(function() {
     axios
-      .get("https://aacfac5b-039c-4e19-8f27-16a1ac1d8255.mock.pstmn.io/arts")
+      .get("http://localhost:8080/arts")
       .then(function(result) {
         console.log(result);
-        const arts = result.data;
+        const arts = result.data.arts;
         setArts(arts);
       })
       .catch(function(error) {
@@ -35,6 +39,9 @@ function MainPage() {
                 <div className="art-contents">
                   <span className="artist-name">{art.artistName}</span>
                   <span className="art-name">{art.artName}</span>
+                  <div className="art-date">
+                    {dayjs(art.createdAt).fromNow()}
+                  </div>
                 </div>
               </Link>
             </div>
