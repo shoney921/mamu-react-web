@@ -3,9 +3,11 @@ import { Button, Divider, Form, Input, Upload, message } from "antd";
 import "./index.css";
 import { API_URL } from "../config/constants.js";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function UploadPage() {
   const [imageUrl, setImageUrl] = React.useState(null);
+  const history = useHistory();
 
   const onSubmit = (values) => {
     console.log("art Name log : ", values);
@@ -18,6 +20,7 @@ function UploadPage() {
       })
       .then((result) => {
         console.log("axios 결과 :", result);
+        history.replace("/");
       })
       .catch((error) => {
         console.error("axios 에러 :", error);
