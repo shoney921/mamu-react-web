@@ -33,8 +33,8 @@ function ArtPage() {
       <div id="art-box">
         <div id="artName">{art.artName}</div>
         <div id="artistName">{art.artistName}</div>
-        <div id="description">{art.description}</div>
         <div id="createAt">{dayjs(art.createdAt).format("YYYY-MM-DD")}</div>
+        <pre id="description">{art.description}</pre>
       </div>
     </div>
   );
