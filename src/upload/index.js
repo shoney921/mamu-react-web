@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Button, Divider, Form, Input, Upload } from "antd";
+import { Button, Divider, Form, Input, Upload, message } from "antd";
 import "./index.css";
 import { API_URL } from "../config/constants.js";
 import axios from "axios";
 
 function UploadPage() {
   const [imageUrl, setImageUrl] = React.useState(null);
+
   const onSubmit = (values) => {
     console.log("art Name log : ", values);
     axios
@@ -20,6 +21,7 @@ function UploadPage() {
       })
       .catch((error) => {
         console.error("axios 에러 :", error);
+        message.error(`에러발생 : ${error.message}`);
       });
   };
   const onChangeImage = (info) => {
