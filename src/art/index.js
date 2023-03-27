@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/constants.js";
+import dayjs from "dayjs";
 
 function ArtPage() {
   const { id } = useParams();
@@ -32,8 +33,8 @@ function ArtPage() {
       <div id="art-box">
         <div id="artName">{art.artName}</div>
         <div id="artistName">{art.artistName}</div>
-        <div id="createAt">2023.03.14</div>
         <div id="description">{art.description}</div>
+        <div id="createAt">{dayjs(art.createdAt).format("YYYY-MM-DD")}</div>
       </div>
     </div>
   );
