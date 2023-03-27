@@ -27,7 +27,7 @@ function ArtPage() {
   return (
     <div>
       <div id="image-box">
-        <img src={"/" + art.imageUrl} alt="art image" />
+        <img src={`${API_URL}/${art.imageUrl}`} alt="art image" />
       </div>
       <div id="art-box">
         <div id="artName">{art.artName}</div>
